@@ -71,7 +71,7 @@ func main() {
 		os.Remove(txt_file)
 
 		fmt.Println("Appending data -> ", len(number_data))
-		prime_file, err := os.OpenFile("primes.data", os.O_APPEND|os.O_WRONLY, 0600)
+		prime_file, err := os.OpenFile("primes.data", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 		if err != nil {
 			fmt.Println("File Index -> ", file_index)
 			panic(err)
