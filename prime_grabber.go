@@ -1,16 +1,16 @@
 package main
 
 import (
-	"io/ioutil"
-	"strings"
-	"fmt"
-	"strconv"
 	"archive/zip"
+	"encoding/binary"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"net/http"
 	"os"
 	"path/filepath"
-	"io"
-	"net/http"
-	"encoding/binary"
+	"strconv"
+	"strings"
 )
 
 var (
@@ -54,9 +54,9 @@ func main() {
 		number_data := make([]byte, 0)
 
 		lines := strings.Split(text, "\n")
-		for _, line :=range lines {
+		for _, line := range lines {
 			words := strings.Split(line, " ")
-			for _, w :=range words {
+			for _, w := range words {
 				num, err := strconv.Atoi(w)
 				if err == nil {
 					num_bytes := make([]byte, 4)
@@ -85,7 +85,6 @@ func main() {
 
 	fmt.Println("Done !!!")
 }
-
 
 func unzip(archive, target string) error {
 	reader, err := zip.OpenReader(archive)
