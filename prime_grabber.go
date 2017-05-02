@@ -18,11 +18,15 @@ var (
 )
 
 func main() {
-	max_mln, err := strconv.Atoi(os.Args[1])
-	if err != nil || max_mln < 1 || max_mln > 50 {
-		fmt.Println("prime_grabber [max mln]")
-		fmt.Println("Default if 50 Mln Prime numbers. Please provide number between 1-50")
-		os.Exit(1)
+	var err error
+	max_mln := 50
+	if len(os.Args) > 1 {
+		max_mln, err = strconv.Atoi(os.Args[1])
+		if err != nil || max_mln < 1 || max_mln > 50 {
+			fmt.Println("prime_grabber [max mln]")
+			fmt.Println("Default if 50 Mln Prime numbers. Please provide number between 1-50")
+			os.Exit(1)
+		}
 	}
 
 	for file_index <= max_mln {
